@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
     int i,rev=0,orig;
-    cout<<"enter the palindrome number";
+    cout<<"Enter the number : ";
     cin>>i;
     orig=i;
     for( ;i>0;i=i/10)
@@ -13,12 +13,12 @@ int main()
     }
     if(orig==rev)
     {
-        cout<<"number is palindrome";
+        cout<<"Given number is palindrome...";
     }
         else
         {
 
-            cout<<"number is not palindrome";
+            cout<<"Given number is not palindrome...";
 
         }
         return 0;
