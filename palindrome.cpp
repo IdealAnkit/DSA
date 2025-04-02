@@ -12,9 +12,9 @@ int main()
         i=i/10;
     }
     if(orig==rev)
-        cout<<"Given number is palindrome";
+        cout<<"Given number is palindrome.";
         else
-            cout<<"Given number is not palindrome";
+            cout<<"Given number is not palindrome.";
         return 0;
 
 }
