@@ -9,7 +9,7 @@ struct BinaryTree
 };
 
 BinaryTree *NewNode, *root, *temp;
-
+//visual
 /*
 
     {
