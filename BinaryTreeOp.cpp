@@ -22,6 +22,8 @@ BinaryTree *NewNode, *root, *temp;
 
 */
 
+
+
 void InOrder(BinaryTree *temp)
 {
     if (temp == nullptr)
