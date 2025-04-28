@@ -14,6 +14,7 @@ int main()
         AnkitReverse[i]=Ankit[top];
         top--;
     }
+    
     printf("%s",AnkitReverse);
     getchar();
     return 0;
