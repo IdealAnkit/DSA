@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 #define size 5
 int front = -1;
 int back = -1;
