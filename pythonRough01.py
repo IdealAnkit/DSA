@@ -1,9 +1,2 @@
-matrix = [[x for x in range(3)] for y in range(3)]
-
-count = 0
-for row in matrix:
-    for element in row:
-        if element % 2 != 0:
-            count += 2
-print(count)
-
+import calendar
+print(calendar.weekheader(2))
