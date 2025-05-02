@@ -4,6 +4,6 @@ count = 0
 for row in matrix:
     for element in row:
         if element % 2 != 0:
-            count += 1
+            count += 2
 print(count)
 
