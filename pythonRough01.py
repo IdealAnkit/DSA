@@ -1,2 +1,7 @@
 import calendar
-print(calendar.weekheader(2))
+
+c = calendar.Calendar()
+
+for weekday in c.iterweekdays():
+    print(weekday, end=" ")
+
