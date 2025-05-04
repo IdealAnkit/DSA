@@ -1,7 +1,5 @@
 import calendar
 
-c = calendar.Calendar()
-
-for weekday in c.iterweekdays():
-    print(weekday, end=" ")
+calendar.setfirstweekday(calendar.FRIDAY)
+print(calendar.weekheader(2))
 
