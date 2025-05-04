@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <iomanip> // for setw
 using namespace std;
 
 class Solution {
@@ -20,12 +21,14 @@ public:
     }
 };
 
-void printDominoes(vector<vector<int>>& dominoes) {
-    cout << "[ ";
+// Helper function to convert vector<vector<int>> to string
+string formatDominoes(const vector<vector<int>>& dominoes) {
+    string result = "[ ";
     for (auto& d : dominoes) {
-        cout << "[" << d[0] << "," << d[1] << "] ";
+        result += "[" + to_string(d[0]) + "," + to_string(d[1]) + "] ";
     }
-    cout << "]";
+    result += "]";
+    return result;
 }
 
 int main() {
@@ -39,11 +42,25 @@ int main() {
         {{2,1}, {2,1}, {1,2}, {2,1}},                // Expected: 6
     };
 
+    // Print table header
+    cout << left
+         << setw(10) << "Test #" 
+         << setw(40) << "Dominoes"
+         << setw(20) << "Equivalent Pairs" 
+         << endl;
+
+    cout << string(70, '-') << endl;
+
+    // Process test cases
     for (int i = 0; i < testCases.size(); ++i) {
-        cout << "Test Case " << i+1 << ": ";
-        printDominoes(testCases[i]);
+        string dominoStr = formatDominoes(testCases[i]);
         int result = sol.numEquivDominoPairs(testCases[i]);
-        cout << " -> Equivalent Pairs: " << result << "\n";
+
+        cout << left 
+             << setw(10) << (i + 1)
+             << setw(40) << dominoStr
+             << setw(20) << result 
+             << endl;
     }
 
     return 0;
