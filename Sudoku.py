@@ -17,7 +17,7 @@ puzzle = [
 class SudokuGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Sudoku with 3x3 Highlighting")
+        self.root.title("Sudoku Game")
         self.entries = [[None for _ in range(9)] for _ in range(9)]
         self.create_grid()
         self.create_buttons()
@@ -25,6 +25,8 @@ class SudokuGUI:
     def create_grid(self):
         board_frame = tk.Frame(self.root, bg="black", bd=2)
         board_frame.grid(row=0, column=0, padx=10, pady=10)
+
+        vcmd = (self.root.register(self.validate_entry), '%P')
 
         for block_row in range(3):
             for block_col in range(3):
@@ -35,7 +37,8 @@ class SudokuGUI:
                     for j in range(3):
                         row = block_row * 3 + i
                         col = block_col * 3 + j
-                        entry = tk.Entry(subgrid, width=3, font=('Arial', 18), justify='center')
+                        entry = tk.Entry(subgrid, width=3, font=('Arial', 18), justify='center',
+                                         validate='key', validatecommand=vcmd)
                         entry.grid(row=i, column=j, padx=1, pady=1)
 
                         if puzzle[row][col] != 0:
@@ -48,6 +51,14 @@ class SudokuGUI:
         tk.Button(self.root, text="Check", command=self.check_solution).grid(row=1, column=0, pady=5, sticky='w', padx=20)
         tk.Button(self.root, text="Solve", command=self.solve_puzzle).grid(row=1, column=0, pady=5)
         tk.Button(self.root, text="Reset", command=self.reset_board).grid(row=1, column=0, pady=5, sticky='e', padx=20)
+
+    def validate_entry(self, new_value):
+        if new_value == "":
+            return True  # Allow clearing
+        if new_value.isdigit() and 1 <= int(new_value) <= 9:
+            return True
+        self.root.bell()  # Sound alert
+        return False
 
     def get_board(self):
         board = []
