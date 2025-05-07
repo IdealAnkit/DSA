@@ -18,19 +18,26 @@ class SudokuGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Sudoku Game")
+        self.root.minsize(500, 550)
+
         self.entries = [[None for _ in range(9)] for _ in range(9)]
         self.create_grid()
         self.create_buttons()
 
     def create_grid(self):
-        board_frame = tk.Frame(self.root, bg="black", bd=2)
-        board_frame.grid(row=0, column=0, padx=10, pady=10)
+        # Parent frame to center everything
+        self.center_frame = tk.Frame(self.root)
+        self.center_frame.pack(expand=True, fill='both')
+
+        # Actual game board frame
+        self.board_frame = tk.Frame(self.center_frame, bg="black", bd=2)
+        self.board_frame.place(relx=0.5, rely=0.5, anchor='center')  # Centering
 
         vcmd = (self.root.register(self.validate_entry), '%P')
 
         for block_row in range(3):
             for block_col in range(3):
-                subgrid = tk.Frame(board_frame, bg="black", bd=2)
+                subgrid = tk.Frame(self.board_frame, bg="black", bd=2)
                 subgrid.grid(row=block_row, column=block_col, padx=2, pady=2)
 
                 for i in range(3):
@@ -48,13 +55,16 @@ class SudokuGUI:
                         self.entries[row][col] = entry
 
     def create_buttons(self):
-        tk.Button(self.root, text="Check", command=self.check_solution).grid(row=1, column=0, pady=5, sticky='w', padx=20)
-        tk.Button(self.root, text="Solve", command=self.solve_puzzle).grid(row=1, column=0, pady=5)
-        tk.Button(self.root, text="Reset", command=self.reset_board).grid(row=1, column=0, pady=5, sticky='e', padx=20)
+        button_frame = tk.Frame(self.root)
+        button_frame.pack(pady=10)
+
+        tk.Button(button_frame, text="Check", command=self.check_solution, width=10).pack(side='left', padx=10)
+        tk.Button(button_frame, text="Solve", command=self.solve_puzzle, width=10).pack(side='left', padx=10)
+        tk.Button(button_frame, text="Reset", command=self.reset_board, width=10).pack(side='left', padx=10)
 
     def validate_entry(self, new_value):
         if new_value == "":
-            return True  # Allow clearing
+            return True
         if new_value.isdigit() and 1 <= int(new_value) <= 9:
             return True
         self.root.bell()  # Sound alert
@@ -141,7 +151,7 @@ class SudokuGUI:
                     self.entries[i][j].insert(0, str(puzzle[i][j]))
                     self.entries[i][j].config(state='disabled')
 
-# Run the GUI
+# Run the game
 if __name__ == "__main__":
     root = tk.Tk()
     app = SudokuGUI(root)
