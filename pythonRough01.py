@@ -1,30 +1,24 @@
-n = 5  # You can change the value of n to increase/decrease pattern size
+import turtle
+import colorsys
 
-# Pattern 1: Left-aligned right-angle triangle
-print("Pattern 1: Left-aligned right-angle triangle")
-for i in range(1, n + 1):
-    print("*" * i)
+# Set up screen
+screen = turtle.Screen()
+screen.bgcolor("black")
+t = turtle.Turtle()
+t.speed(0)  # Fastest
 
-print("\nPattern 2: Right-aligned right-angle triangle")
-# Pattern 2: Right-aligned right-angle triangle
-for i in range(1, n + 1):
-    print(" " * (n - i) + "*" * i)
+# Color setup
+h = 0
+n = 36  # Number of colors
+colors = [colorsys.hsv_to_rgb(h+i/n, 1.0, 1.0) for i in range(n)]
 
-print("\nPattern 3: Pyramid")
-# Pattern 3: Pyramid
-for i in range(1, n + 1):
-    print(" " * (n - i) + "*" * (2 * i - 1))
+# Draw spiral
+for i in range(360):
+    t.color(colors[i % n])
+    t.forward(i * 3 / n + i)
+    t.left(59)
+    t.pensize(i * 3 / n)
 
-print("\nPattern 4: Inverted pyramid")
-# Pattern 4: Inverted pyramid
-for i in range(n, 0, -1):
-    print(" " * (n - i) + "*" * (2 * i - 1))
-
-print("\nPattern 5: Diamond")
-# Pattern 5: Diamond
-# Top half
-for i in range(1, n + 1):
-    print(" " * (n - i) + "*" * (2 * i - 1))
-# Bottom half
-for i in range(n - 1, 0, -1):
-    print(" " * (n - i) + "*" * (2 * i - 1))
+# Hide turtle and keep window open
+t.hideturtle()
+turtle.done()
