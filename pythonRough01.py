@@ -1,24 +1,37 @@
 import turtle
-import colorsys
 
-# Set up screen
+def draw_tree(branch_length, t):
+    if branch_length > 5:
+        # Draw the main branch
+        t.forward(branch_length)
+        
+        # Draw right branch
+        t.right(20)
+        draw_tree(branch_length - 15, t)
+        
+        # Return to main branch
+        t.left(40)
+        draw_tree(branch_length - 15, t)
+        
+        # Reset angle
+        t.right(20)
+        t.backward(branch_length)
+
+# Setup screen
 screen = turtle.Screen()
 screen.bgcolor("black")
-t = turtle.Turtle()
-t.speed(0)  # Fastest
 
-# Color setup
-h = 0
-n = 36  # Number of colors
-colors = [colorsys.hsv_to_rgb(h+i/n, 1.0, 1.0) for i in range(n)]
+# Create turtle
+tree_turtle = turtle.Turtle()
+tree_turtle.color("lime")
+tree_turtle.speed(0)
+tree_turtle.left(90)
+tree_turtle.penup()
+tree_turtle.backward(100)
+tree_turtle.pendown()
 
-# Draw spiral
-for i in range(360):
-    t.color(colors[i % n])
-    t.forward(i * 3 / n + i)
-    t.left(59)
-    t.pensize(i * 3 / n)
+# Draw the tree
+draw_tree(100, tree_turtle)
 
-# Hide turtle and keep window open
-t.hideturtle()
-turtle.done()
+# Exit on click
+screen.exitonclick()
