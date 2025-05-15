@@ -65,18 +65,6 @@ def main():
         triangle_area = calculate_area('TRIANGLE', base=6, height=8) # Test case-insensitivity
         print(f"Area of the triangle: {triangle_area}")  # Output: 24.0
 
-        # Example of raising a ValueError due to invalid shape
-        # invalid_area = calculate_area('invalid', length=5, width=10) # uncomment to test
-
-        # Example of raising a ValueError due to missing dimensions
-        # missing_dimension_area = calculate_area('rectangle', length=5) # uncomment to test
-
-        # Example of negative dimension
-        # negative_dimension_area = calculate_area('rectangle', length=-5, width=10) # uncomment to test
-
-        # Example of invalid type
-        # invalid_type_area = calculate_area('rectangle', length="abc", width=10) # uncomment to test
-
     except ValueError as e:
         print(f"Error: {e}")  # Print the error message
 
