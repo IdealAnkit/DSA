@@ -10,6 +10,7 @@ screen.setup(width=600, height=600)
 screen.tracer(0)  # Turn off auto screen updates
 
 # Create drawing pen
+
 pen = turtle.Turtle()
 pen.hideturtle()
 pen.pensize(3)
