@@ -6,13 +6,11 @@ int main()
     cout<<"Enter the number : ";
     cin>>i;
     orig=i;
-    for( ;i>0;i=i/10)
-    {
+    for( ;i>0;i=i/10){
 
         rev=rev*10+i%10;
     }
-    if(orig==rev)
-    {
+    if(orig==rev){
         cout<<"Given number is palindrome...";
     }
         else
