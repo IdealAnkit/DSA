@@ -9,6 +9,7 @@ struct BinaryTree
 };
 
 BinaryTree *NewNode, *root, *temp;
+
 //  demo tree
 /*
 
