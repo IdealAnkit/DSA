@@ -1,4 +1,4 @@
-# to do list gui
+# to do list gui code
 import tkinter as tk
 from tkinter import messagebox
 
