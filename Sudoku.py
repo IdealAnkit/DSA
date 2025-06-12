@@ -151,6 +151,7 @@ class SudokuGUI:
                     self.entries[i][j].insert(0, str(puzzle[i][j]))
                     self.entries[i][j].config(state='disabled')
 # Run the game
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = SudokuGUI(root)
