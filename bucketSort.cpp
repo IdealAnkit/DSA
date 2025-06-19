@@ -28,7 +28,7 @@ void bucketSort(vector<float>& arr) {
             arr[idx++] = val;
 }
 
-// Driver code
+// main function
 int main() {
     vector<float> arr = {0.897f, 0.565f, 0.656f, 0.123f, 0.665f, 0.343f};
 
